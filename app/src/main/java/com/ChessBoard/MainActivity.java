@@ -2,6 +2,7 @@ package com.ChessBoard;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
                 int resID = getResources().getIdentifier(btnid, "id", getPackageName());
                 //will fit perfectly based on i, j. Gets references to all buttons without having to design 1 by 1.
                 gameButtons[i][j] = findViewById(resID);
-
+                Log.e(MainActivity.class.getName(), String.valueOf(gameButtons[i][j] == null));
 
 
                 final int getI = i;
