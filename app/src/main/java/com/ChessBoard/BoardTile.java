@@ -52,9 +52,8 @@ public class BoardTile {
         int[] location = new int[2];
 
         //returns the x and y into location array
+        btn.requestLayout();
         btn.getLocationOnScreen(location);
-        Log.e(Board.class.getSimpleName(), "location: " + location);
-
 
         piece.setPosition(location);
 

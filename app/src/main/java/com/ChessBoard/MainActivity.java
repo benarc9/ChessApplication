@@ -1,9 +1,12 @@
 package com.ChessBoard;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -32,8 +35,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
     private BoardTile firstSpot;
     private BoardTile secondSpot;
 
-
-
+    private int[][][] buttonPositions;
 
 
     @Override
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         player1Text = findViewById(R.id.player1points);
         player2Text = findViewById(R.id.player2points);
 
+        buttonPositions = new int[8][8][2];
 
 
         for (int i = 0; i < 8; i++) {
@@ -53,13 +56,18 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
                 int resID = getResources().getIdentifier(btnid, "id", getPackageName());
                 //will fit perfectly based on i, j. Gets references to all buttons without having to design 1 by 1.
                 gameButtons[i][j] = findViewById(resID);
-                Log.e(MainActivity.class.getName(), String.valueOf(gameButtons[i][j] == null));
-
 
                 final int getI = i;
                 final int getJ = j;
 
-
+                gameButtons[i][j].post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (getI == 7 && getJ == 7){
+                            board = new Board(MainActivity.this, gameButtons);
+                        }
+                    }
+                });
 
                 gameButtons[i][j].setOnClickListener(new View.OnClickListener(){
                     @Override
@@ -117,16 +125,12 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
             }
         }
 
-        board = new Board(this, gameButtons);
 
+    }
 
-//        Button resignButton = findViewById(R.id.Resign);
-//        resignButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
+    @Override
+    public void onStart() {
+        super.onStart();
 
 
     }
@@ -135,6 +139,17 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         ENTRY,
         SELECTEDCLICK
     }
+
+//        Button resignButton = findViewById(R.id.Resign);
+//        resignButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        }
+
+
+
 
 
 
