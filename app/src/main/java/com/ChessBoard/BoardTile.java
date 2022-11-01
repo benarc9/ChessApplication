@@ -1,5 +1,6 @@
 package com.ChessBoard;
 
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageButton;
 
@@ -52,6 +53,8 @@ public class BoardTile {
 
         //returns the x and y into location array
         btn.getLocationOnScreen(location);
+        Log.e(Board.class.getSimpleName(), "location: " + location);
+
 
         piece.setPosition(location);
 
