@@ -123,7 +123,33 @@ public class Board {
                 new Knight(tiles, 7, 6, 0, createImageView(R.drawable.wknight)), new Rook(tiles, 7, 7, 0, createImageView(R.drawable.wrook))};
 
         setUpBoard(tiles);
+
+
+        int index = 0;
+        for (int i = 0; i < chessPieces.length - 1; i++) {
+            for (int j = 0; j < chessPieces.length - 1; j++) {
+
+                if (i == 0) {
+                    tiles[i][j].setChessPiece(chessPieces[index]);
+                    index++;
+                } else if (i == 1) {
+                    tiles[i][j].setChessPiece(chessPieces[index]);
+                    index++;
+                } else if (i == 6) {
+                    tiles[i][j].setChessPiece(chessPieces[index]);
+                    index++;
+                } else if (i == 7) {
+                    tiles[i][j].setChessPiece(chessPieces[index]);
+                    index++;
+                }
+
+            }
+        }
+
+
     }
+
+
 
 
     private ImageView createImageView(int draw) {

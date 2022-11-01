@@ -46,7 +46,15 @@ public class BoardTile {
         return this.chessPiece;
     }
 
+
     public void setChessPiece(Piece piece) {
+
+        int[] location = new int[2];
+
+        //returns the x and y into location array
+        btn.getLocationOnScreen(location);
+
+        piece.setPosition(location);
 
         this.chessPiece = piece;
     }

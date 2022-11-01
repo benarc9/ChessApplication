@@ -66,5 +66,9 @@ public abstract class Piece {
         //this.piece = null;
     }
 
+    public void setPosition(int[] position) {
+        iv.setX(position[0]);
+        iv.setY(position[1]);
+    }
 
 }
