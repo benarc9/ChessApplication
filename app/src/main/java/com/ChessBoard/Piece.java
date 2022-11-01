@@ -67,8 +67,8 @@ public abstract class Piece {
     }
 
     public void setPosition(int[] position) {
-        iv.setX(position[0] += iv.findViewById(R.id.Back).getWidth());
-        iv.setY(position[1] += iv.findViewById(R.id.blank1).getWidth());
+        iv.setX(position[0] +  25);
+        iv.setY(position[1] - 275);
     }
 
 }
