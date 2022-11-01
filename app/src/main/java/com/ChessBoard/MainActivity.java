@@ -44,8 +44,6 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         player1Text = findViewById(R.id.player1points);
         player2Text = findViewById(R.id.player2points);
 
-        board = new Board(this, gameButtons);
-
 
 
         for (int i = 0; i < gameButtons.length; i++) {
@@ -116,12 +114,11 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
 
                     }
                 });
-
-
-                //sets an onClickListener to all of them.
-                //gameButtons[i][j].setOnClickListener(this);
             }
         }
+
+        board = new Board(this, gameButtons);
+
 
 //        Button resignButton = findViewById(R.id.Resign);
 //        resignButton.setOnClickListener(new View.OnClickListener() {

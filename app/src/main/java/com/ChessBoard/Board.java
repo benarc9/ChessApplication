@@ -28,11 +28,11 @@ public class Board {
     public Board(Context c, ImageButton[][] gameButtons) {
         this.c = c;
         this.gameButtons = gameButtons;
-        initializeBoard();
-
+        this.tiles = new BoardTile[8][8];
+        createPieces();
     }
 
-    public BoardTile[][] setUpBoard(BoardTile[][] boardT) {
+    public BoardTile[][] setUpBoard() {
 
         int index = 0;
         int bJuicers = 0;
@@ -41,69 +41,63 @@ public class Board {
         int wJuicers = 24;
 
 
-        for(int i = 0; i < boardT.length - 1; i++) {
+        for(int i = 0; i < tiles.length - 1; i++) {
             //juicers
             if (i == 0) {
-
-                setTileColor(boardT, i, bJuicers);
+                setTileColor(i, bJuicers);
                 //pawns
             } else if (i == 1) {
 
-                setTileColor(boardT, i, bPawns);
+                setTileColor(i, bPawns);
                 //pawns
             } else if (i == 6) {
 
-                setTileColor(boardT, i, wJuicers);
+                setTileColor(i, wJuicers);
                 //juicers
             } else if (i == 7) {
 
-                setTileColor(boardT, i, wPawns);
+                setTileColor(i, wPawns);
             } else {
 
-                for (int j = 0; j < boardT.length; j++) {
+                for (int j = 0; j < tiles.length; j++) {
 
-                    setTileColor(boardT, i, j);
+                    setTileColor(i, j);
                 }
 
             }
 
         }
 
-        return tiles = boardT;
+        return tiles;
     }
 
     public BoardTile[][] getTiles() {
         return tiles;
     }
 
-    public void setTileColor(BoardTile[][] boardT, int i, int juicers) {
-
-
-
-        for(int j = 0; j < boardT.length - 1; j++) {
+    public void setTileColor(int i, int juicers) {
+        for(int j = 0; j < tiles.length - 1; j++) {
             if (i % 2 == 0) {
                 if (j % 2 == 0) {
-                    boardT[i][j] = new BoardTile(i, j, chessPieces[juicers], gameButtons[i][j], R.color.white);
+                    tiles[i][j] = new BoardTile(i, j, chessPieces[juicers], gameButtons[i][j], R.color.white);
                 } else {
-                    boardT[i][j] = new BoardTile(i, j, chessPieces[juicers], gameButtons[i][j], R.color.black);
+                    tiles[i][j] = new BoardTile(i, j, chessPieces[juicers], gameButtons[i][j], R.color.black);
                 }
             } else {
                 if (j % 2 == 0) {
-                    boardT[i][j] = new BoardTile(i, j, chessPieces[juicers], gameButtons[i][j], R.color.black);
+                    tiles[i][j] = new BoardTile(i, j, chessPieces[juicers], gameButtons[i][j], R.color.black);
                 } else {
-                    boardT[i][j] = new BoardTile(i, j, chessPieces[juicers], gameButtons[i][j], R.color.white);
+                    tiles[i][j] = new BoardTile(i, j, chessPieces[juicers], gameButtons[i][j], R.color.white);
                 }
             }
-            boardT[i][j].setChessPiece(chessPieces[juicers]);
+            tiles[i][j].setChessPiece(chessPieces[juicers]);
             juicers++;
         }
     }
 
 
 
-    private void initializeBoard() {
-
-        tiles = new BoardTile[8][8];
+    private void createPieces() {
 
         chessPieces =   new Piece[] {   new Rook(tiles, 0, 0, 1, createImageView(R.drawable.brook)), new Knight(tiles, 0, 1, 1, createImageView(R.drawable.bknight)),
                 new Bishop(tiles, 0, 2, 1, createImageView(R.drawable.bbishop)), new Queen(tiles, 0, 3, 1, createImageView(R.drawable.bqueen)),
@@ -122,10 +116,10 @@ public class Board {
                 new King(tiles, 7, 4, 0, createImageView(R.drawable.wking)), new Bishop(tiles, 7, 5, 0, createImageView(R.drawable.wbishop)),
                 new Knight(tiles, 7, 6, 0, createImageView(R.drawable.wknight)), new Rook(tiles, 7, 7, 0, createImageView(R.drawable.wrook))};
 
-        setUpBoard(tiles);
-
+        setUpBoard();
 
         int index = 0;
+
         for (int i = 0; i < chessPieces.length - 1; i++) {
             for (int j = 0; j < chessPieces.length - 1; j++) {
 
