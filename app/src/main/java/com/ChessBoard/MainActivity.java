@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
 
 
 
-        for (int i = 0; i < gameButtons.length; i++) {
-            for (int j = 0; j < gameButtons.length; j++) {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
                 String btnid = "btn" + i + j;
                 //resource id, has to pass this to findViewById (we don't use findViewById though --->), this is to create it dynamically in the nested loop
                 int resID = getResources().getIdentifier(btnid, "id", getPackageName());

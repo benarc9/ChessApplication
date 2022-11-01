@@ -3,6 +3,7 @@ package com.ChessBoard;
 //Board --> Button --> Tile --> Piece
 
 import android.content.Context;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -42,7 +43,7 @@ public class Board {
         this.tiles = new BoardTile[8][8];
 
 
-        for(int i = 0; i < tiles.length - 1; i++) {
+        for(int i = 0; i < 8; i++) {
             //juicers
             if (i == 0) {
                 createTiles(i, bJuicers);
@@ -77,7 +78,7 @@ public class Board {
     }
 
     public void createTiles(int i, int juicers) {
-        for(int j = 0; j < tiles.length - 1; j++) {
+        for(int j = 0; j < 8; j++) {
             if (i % 2 == 0) {
                 if (j % 2 == 0) {
                     tiles[i][j] = new BoardTile(i, j, gameButtons[i][j], R.color.white);
@@ -121,9 +122,10 @@ public class Board {
 
         int index = 0;
 
-        for (int i = 0; i < chessPieces.length - 1; i++) {
-            for (int j = 0; j < chessPieces.length - 1; j++) {
-
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                Log.e(Board.class.getSimpleName(), "x: " + i + " y: " + j);
+                Log.e(Board.class.getSimpleName(), "Index: " + index);
                 if (i == 0) {
                     tiles[i][j].setChessPiece(chessPieces[index]);
                     index++;
