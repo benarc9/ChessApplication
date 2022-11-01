@@ -34,7 +34,6 @@ public class Board {
 
     public BoardTile[][] setUpTiles() {
 
-        int index = 0;
         int bJuicers = 0;
         int bPawns = 8;
         int wPawns = 16;
@@ -81,19 +80,17 @@ public class Board {
         for(int j = 0; j < tiles.length - 1; j++) {
             if (i % 2 == 0) {
                 if (j % 2 == 0) {
-                    tiles[i][j] = new BoardTile(i, j, chessPieces[juicers], gameButtons[i][j], R.color.white);
+                    tiles[i][j] = new BoardTile(i, j, gameButtons[i][j], R.color.white);
                 } else {
-                    tiles[i][j] = new BoardTile(i, j, chessPieces[juicers], gameButtons[i][j], R.color.black);
+                    tiles[i][j] = new BoardTile(i, j, gameButtons[i][j], R.color.black);
                 }
             } else {
                 if (j % 2 == 0) {
-                    tiles[i][j] = new BoardTile(i, j, chessPieces[juicers], gameButtons[i][j], R.color.black);
+                    tiles[i][j] = new BoardTile(i, j, gameButtons[i][j], R.color.black);
                 } else {
-                    tiles[i][j] = new BoardTile(i, j, chessPieces[juicers], gameButtons[i][j], R.color.white);
+                    tiles[i][j] = new BoardTile(i, j, gameButtons[i][j], R.color.white);
                 }
             }
-            tiles[i][j].setChessPiece(chessPieces[juicers]);
-            juicers++;
         }
     }
 

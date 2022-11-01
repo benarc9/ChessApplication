@@ -15,10 +15,9 @@ public class BoardTile {
 
 
 
-    public BoardTile(int xCoord, int yCoord, Piece chessPiece, ImageButton btn, int color) {
+    public BoardTile(int xCoord, int yCoord, ImageButton btn, int color) {
         this.xCoord = xCoord;
         this.yCoord = yCoord;
-        this.chessPiece = chessPiece;
         this.btn = btn;
         this.color = color;
     }
