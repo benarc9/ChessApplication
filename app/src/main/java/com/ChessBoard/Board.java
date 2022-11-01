@@ -28,11 +28,11 @@ public class Board {
     public Board(Context c, ImageButton[][] gameButtons) {
         this.c = c;
         this.gameButtons = gameButtons;
-        this.tiles = new BoardTile[8][8];
+        setUpTiles();
         createPieces();
     }
 
-    public BoardTile[][] setUpBoard() {
+    public BoardTile[][] setUpTiles() {
 
         int index = 0;
         int bJuicers = 0;
@@ -40,28 +40,30 @@ public class Board {
         int wPawns = 16;
         int wJuicers = 24;
 
+        this.tiles = new BoardTile[8][8];
+
 
         for(int i = 0; i < tiles.length - 1; i++) {
             //juicers
             if (i == 0) {
-                setTileColor(i, bJuicers);
+                createTiles(i, bJuicers);
                 //pawns
             } else if (i == 1) {
 
-                setTileColor(i, bPawns);
+                createTiles(i, bPawns);
                 //pawns
             } else if (i == 6) {
 
-                setTileColor(i, wJuicers);
+                createTiles(i, wJuicers);
                 //juicers
             } else if (i == 7) {
 
-                setTileColor(i, wPawns);
+                createTiles(i, wPawns);
             } else {
 
                 for (int j = 0; j < tiles.length; j++) {
 
-                    setTileColor(i, j);
+                    createTiles(i, j);
                 }
 
             }
@@ -75,7 +77,7 @@ public class Board {
         return tiles;
     }
 
-    public void setTileColor(int i, int juicers) {
+    public void createTiles(int i, int juicers) {
         for(int j = 0; j < tiles.length - 1; j++) {
             if (i % 2 == 0) {
                 if (j % 2 == 0) {
@@ -99,6 +101,8 @@ public class Board {
 
     private void createPieces() {
 
+
+
         chessPieces =   new Piece[] {   new Rook(tiles, 0, 0, 1, createImageView(R.drawable.brook)), new Knight(tiles, 0, 1, 1, createImageView(R.drawable.bknight)),
                 new Bishop(tiles, 0, 2, 1, createImageView(R.drawable.bbishop)), new Queen(tiles, 0, 3, 1, createImageView(R.drawable.bqueen)),
                 new King(tiles, 0, 4, 1, createImageView(R.drawable.bking)), new Bishop(tiles, 0, 5, 1, createImageView(R.drawable.bbishop)),
@@ -116,7 +120,7 @@ public class Board {
                 new King(tiles, 7, 4, 0, createImageView(R.drawable.wking)), new Bishop(tiles, 7, 5, 0, createImageView(R.drawable.wbishop)),
                 new Knight(tiles, 7, 6, 0, createImageView(R.drawable.wknight)), new Rook(tiles, 7, 7, 0, createImageView(R.drawable.wrook))};
 
-        setUpBoard();
+
 
         int index = 0;
 
