@@ -13,6 +13,11 @@ public class Knight extends Piece{
     }
 
     @Override
+    public String toString() {
+        return "Knight";
+    }
+
+    @Override
     public ArrayList<BoardTile> getValidMoves() {
 
         validTiles = new ArrayList<BoardTile>();

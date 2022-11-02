@@ -13,6 +13,11 @@ public class Queen extends Piece{
     }
 
     @Override
+    public String toString() {
+        return "Queen";
+    }
+
+    @Override
     public ArrayList<BoardTile> getValidMoves() {
 
         validTiles = new ArrayList<BoardTile>();

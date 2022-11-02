@@ -13,6 +13,11 @@ public class Bishop extends Piece{
     }
 
     @Override
+    public String toString() {
+        return "Bishop";
+    }
+
+    @Override
     public ArrayList<BoardTile> getValidMoves() {
         validTiles = new ArrayList<BoardTile>();
         BoardTile tile;

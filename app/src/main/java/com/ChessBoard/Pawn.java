@@ -31,6 +31,11 @@ public class Pawn extends Piece {
         return this.yCoord;
     }
 
+    @Override
+    public String toString() {
+        return "Pawn";
+    }
+
 
     public ArrayList<BoardTile> getValidMoves() {
 

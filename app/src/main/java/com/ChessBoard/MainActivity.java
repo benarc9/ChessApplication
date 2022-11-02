@@ -27,14 +27,15 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
     //private ArrayList<>
     private ImageButton CurrentPlace;
     private ImageButton NewPlace;
+    //should be int
     private TextView player1Text;
     private TextView player2Text;
     private boolean SelectedMove = false;
 
-
     private BoardTile firstSpot;
     private BoardTile secondSpot;
 
+    //why is there 3 brackets here
     private int[][][] buttonPositions;
 
 
@@ -46,6 +47,10 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         player1Text = findViewById(R.id.player1points);
         player2Text = findViewById(R.id.player2points);
 
+
+
+
+        //what is the 2 here at the end
         buttonPositions = new int[8][8][2];
 
 
@@ -73,12 +78,22 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
                     @Override
                     public void onClick(View view) {
 
+                        //if whiteTurn, then can ONLY click the white pieces (public BoardTile availableTiles()?)
 
                         switch (state) {
+
                             case ENTRY:
 
                                 BoardTile clickedTile = board.getTiles()[getI][getJ];
 
+                                if (whiteTurn) {
+                                    if (!(clickedTile.getChessPiece().getPieceColor() == 0)) {
+                                        //will this now let the current person click a tile again, right?
+                                        //if this works how I think it does then I wouldnt have to check the if
+                                        //not condition since it will always be black since its checking it in the first one^
+                                        break;
+                                    }
+                                }
 
 
                                 if (!clickedTile.spotTaken()) {
@@ -88,7 +103,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
                                     firstSpot = clickedTile;
                                     state = State.SELECTEDCLICK;
 
-                                    for (BoardTile tile: clickedTile.getChessPiece().getValidMoves()) {
+                                    for (BoardTile tile : clickedTile.getChessPiece().getValidMoves()) {
                                         board.getTiles()[getI][getJ].addHighLight();
 
                                     }
@@ -97,32 +112,43 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
 
                                 break;
                             case SELECTEDCLICK:
+                                //I dont have to check for white turn in here I just have to change the whiteTurn boolean
+                                //so that black goes next since validMoves handles it I believe
 
                                 state = State.ENTRY;
                                 int x = board.getTiles()[getI][getJ].getX();
                                 int y = board.getTiles()[getI][getJ].getY();
 
                                 boolean clickedValidMove = false;
-                                for (BoardTile tile: firstSpot.getChessPiece().getValidMoves()) {
+                                for (BoardTile tile : firstSpot.getChessPiece().getValidMoves()) {
                                     if (tile.getX() == x && tile.getY() == y) {
                                         clickedValidMove = true;
+                                        //get the points text to update
+                                        setPlayerPoints(player1Text, tile.getChessPiece());
+                                        setPlayerPoints(player2Text, tile.getChessPiece());
                                         firstSpot.getChessPiece().move(tile);
+                                        round++;
+                                        whiteTurn = false;
                                         break;
                                     }
                                 }
                                 if (!clickedValidMove) {
 
-                                    for (BoardTile tile: firstSpot.getChessPiece().getValidMoves()) {
+                                    for (BoardTile tile : firstSpot.getChessPiece().getValidMoves()) {
                                         board.getTiles()[getI][getJ].removeHighLight();
                                     }
                                 }
 
                                 break;
+
                         }
 
                     }
+
                 });
+
             }
+
         }
 
 
@@ -131,8 +157,37 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
     @Override
     public void onStart() {
         super.onStart();
+    }
 
-
+    private void setPlayerPoints(TextView playerText, Piece piece) {
+        //sets the points depending on if the piece they took from the tile they move to is black or white.
+        if (piece.getPieceColor() == 0) {
+            //how can i check what kind of piece the piece is with equals (can I do this?)
+            if (piece.toString() == "Pawn") {
+                playerText.setText(playerText.getText() + "1");
+            } else if (piece.toString() == "Rook") {
+                playerText.setText(playerText.getText() + "5");
+            } else if (piece.toString() == "Knight") {
+                playerText.setText(playerText.getText() + "3");
+            } else if (piece.toString() == "Bishop") {
+                playerText.setText(playerText.getText() + "3");
+            } else if (piece.toString() == "Queen") {
+                playerText.setText(playerText.getText() + "11");
+            }
+        } else if (piece.getPieceColor() == 1) {
+            //how can i check what kind of piece the piece is with equals (can I do this?)
+            if (piece.toString() == "Pawn") {
+                playerText.setText(playerText.getText() + "1");
+            } else if (piece.toString() == "Rook") {
+                playerText.setText(playerText.getText() + "5");
+            } else if (piece.toString() == "Knight") {
+                playerText.setText(playerText.getText() + "3");
+            } else if (piece.toString() == "Bishop") {
+                playerText.setText(playerText.getText() + "3");
+            } else if (piece.toString() == "Queen") {
+                playerText.setText(playerText.getText() + "11");
+            }
+        }
     }
 
     private enum State {
