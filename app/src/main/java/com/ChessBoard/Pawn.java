@@ -44,6 +44,50 @@ public class Pawn extends Piece {
             if (this.getX() == 6) {
 
                 //if the tile up one from current piece is null
+                tile = gameBoard[this.getX()][this.getY() - 1];
+                if (!tile.spotTaken()) {
+
+                    //adds a move to validTiles (up 1)
+                    validTiles.add(tile);
+
+                    //if the tile up two from current piece is null
+                    tile = gameBoard[this.getX()][this.getY() - 2];
+                    if (!tile.spotTaken()) {
+                        //adds a move to validTiles (up 2)
+                        validTiles.add(tile);
+
+                    }
+                }
+            //if pawn is not at starting position (6)
+            } else {
+                //adds a move to validTiles (up 1)
+                tile = gameBoard[this.getX()][this.getY() - 1];
+                validTiles.add(tile);
+
+            }
+
+            tile = gameBoard[this.getX() - 1][this.getY() - 1];
+            if (tile.spotTaken()) {
+                //if that piece is black
+                if (tile.getChessPiece().getPieceColor() == 1) {
+                    //adds a move to validTiles (diagonal up left)
+                    validTiles.add(tile);
+                }
+            }
+
+            tile = gameBoard[this.getX() + 1][this.getY() - 1];
+            if (tile.spotTaken()) {
+                //if that piece is black
+                if (tile.getChessPiece().getPieceColor() == 1) {
+                    //adds a move to validTiles (diagonal up left)
+                    validTiles.add(tile);
+                }
+            }
+            return validTiles;
+        } else {
+            if (this.getX() == 1) {
+
+                //if the tile up one from current piece is null
                 tile = gameBoard[this.getX()][this.getY() + 1];
                 if (!tile.spotTaken()) {
 
@@ -58,7 +102,7 @@ public class Pawn extends Piece {
 
                     }
                 }
-            //if pawn is not at starting position (6)
+                //if pawn is not at starting position (6)
             } else {
                 //adds a move to validTiles (up 1)
                 tile = gameBoard[this.getX()][this.getY() + 1];
@@ -69,7 +113,7 @@ public class Pawn extends Piece {
             tile = gameBoard[this.getX() - 1][this.getY() + 1];
             if (tile.spotTaken()) {
                 //if that piece is black
-                if (tile.getChessPiece().getPieceColor() == 1) {
+                if (tile.getChessPiece().getPieceColor() == 0) {
                     //adds a move to validTiles (diagonal up left)
                     validTiles.add(tile);
                 }
@@ -78,14 +122,16 @@ public class Pawn extends Piece {
             tile = gameBoard[this.getX() + 1][this.getY() + 1];
             if (tile.spotTaken()) {
                 //if that piece is black
-                if (tile.getChessPiece().getPieceColor() == 1) {
+                if (tile.getChessPiece().getPieceColor() == 0) {
                     //adds a move to validTiles (diagonal up left)
                     validTiles.add(tile);
                 }
             }
+
+            return validTiles;
         }
 
-        return validTiles;
+
     }
 
 
