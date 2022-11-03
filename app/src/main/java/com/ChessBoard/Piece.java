@@ -62,8 +62,8 @@ public abstract class Piece {
 
     //i need to move the position of imageView in move() so that when a piece moves the image does too
     public void setPosition(int[] position) {
-        iv.setX(position[0]);
-        iv.setY(position[1]);
+        iv.setX(position[0] + 25);
+        iv.setY(position[1] - 275);
     }
 
     //if king is checked

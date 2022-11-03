@@ -50,8 +50,6 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
                 //will fit perfectly based on i, j. Gets references to all buttons without having to design 1 by 1.
                 gameButtons[i][j] = findViewById(resID);
 
-
-
                 final int getI = i;
                 final int getJ = j;
 
@@ -138,14 +136,13 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
                                 }
 
                                 break;
-
                         }
 
                     }
-
                 });
-
             }
+        }
+
 
         }
 
@@ -204,6 +201,11 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
 //
 //            }
 //        });
+
+
+
+
+
 
 
 
