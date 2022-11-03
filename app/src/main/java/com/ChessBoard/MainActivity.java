@@ -144,9 +144,6 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         }
 
 
-        }
-
-
     }
 
     @Override
@@ -201,15 +198,6 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
 //
 //            }
 //        });
-
-
-
-
-
-
-
-
-
 
 
     /*@Override
