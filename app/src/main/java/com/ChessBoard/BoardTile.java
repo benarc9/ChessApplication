@@ -28,10 +28,6 @@ public class BoardTile {
         return new float[]{this.btn.getX(), this.btn.getY()};
     }
 
-    public int getColor() {
-        return this.color;
-    }
-
     public void removeHighLight() {
         this.btn.setBackgroundResource(color);
     }
@@ -77,14 +73,6 @@ public class BoardTile {
     public boolean spotTaken() {
 
         return !(chessPiece == null);
-    }
-
-    public void TransferPiece(BoardTile Tile)//BoardTile should be passed as a reference
-    {//if not, change void to Piece and return Tile to location on the board that piece is moving to.
-
-        //should we update the x and y of the piece that took over the piece.
-        Tile.setChessPiece(chessPiece);
-        chessPiece = null;
     }
 
 

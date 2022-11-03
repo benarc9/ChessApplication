@@ -4,17 +4,15 @@ package com.ChessBoard;
 
 import android.content.Context;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 //hard to think of everything that has to do with the board
 //its creating all the pieces, whose turn it is (black or white),
 public class Board {
 
-    private boolean turn;
+
     private Context c;
     ImageButton[][] gameButtons;
 
@@ -33,6 +31,7 @@ public class Board {
     }
 
     public BoardTile[][] setUpBoard(BoardTile[][] boardT) {
+
 
         int index = 0;
         int bJuicers = 0;
