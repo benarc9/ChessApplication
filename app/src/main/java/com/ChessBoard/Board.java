@@ -113,10 +113,10 @@ public class Board {
                 new Pawn(tiles, 6, 2, 0, createImageView(R.drawable.wpawn)), new Pawn(tiles, 6, 3, 0, createImageView(R.drawable.wpawn)),
                 new Pawn(tiles, 6, 4, 0, createImageView(R.drawable.wpawn)), new Pawn(tiles, 6, 5, 0, createImageView(R.drawable.wpawn)),
                 new Pawn(tiles, 6, 6, 0, createImageView(R.drawable.wpawn)), new Pawn(tiles, 6, 7, 0, createImageView(R.drawable.wpawn)),
-                new Rook(tiles, 7, 0, 0, createImageView(R.drawable.wrook)), new Knight(tiles, 7, 1, 0, createImageView(R.drawable.wknight)),
+                new Rook(tiles, 7, 0, 0, createImageView(R.drawable.wrook)), new Knight(tiles, 7, 1, 0, createImageView(R.drawable.wkknight)),
                 new Bishop(tiles, 7, 2, 0, createImageView(R.drawable.wbishop)), new Queen(tiles, 7, 3, 0, createImageView(R.drawable.wqueen)),
                 new King(tiles, 7, 4, 0, createImageView(R.drawable.wking)), new Bishop(tiles, 7, 5, 0, createImageView(R.drawable.wbishop)),
-                new Knight(tiles, 7, 6, 0, createImageView(R.drawable.wknight)), new Rook(tiles, 7, 7, 0, createImageView(R.drawable.wrook))};
+                new Knight(tiles, 7, 6, 0, createImageView(R.drawable.wkknight)), new Rook(tiles, 7, 7, 0, createImageView(R.drawable.wrook))};
 
 
 
